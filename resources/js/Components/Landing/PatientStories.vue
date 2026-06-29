@@ -1,0 +1,114 @@
+<script setup>
+const patientStories = [
+    {
+        name: "Rahman Ahmed",
+        condition: "Cardiac Surgery",
+        story: "The care I received at Xet Hospital was exceptional. The cardiac team saved my life with their expertise and compassion.",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+        rating: 5,
+    },
+    {
+        name: "Fatima Begum",
+        condition: "Orthopedic Treatment",
+        story: "After my knee replacement surgery, I can walk without pain for the first time in years. Thank you Xet Hospital!",
+        image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+        rating: 5,
+    },
+    {
+        name: "Jamal Uddin",
+        condition: "Neurology",
+        story: "The neurology department provided excellent care for my condition. The doctors were knowledgeable and caring.",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80",
+        rating: 4,
+    },
+];
+</script>
+
+<template>
+    <section id="patient-stories" class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-card">
+                <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">
+                    Our Patients
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500"
+                    >
+                        Share Their Stories
+                    </span>
+                </h2>
+                <p
+                    class="text-base md:text-lg text-gray-600 max-w-lg md:max-w-2xl mt-2"
+                >
+                    Real stories from patients who have experienced exceptional
+                    care at Xet Hospital.
+                </p>
+            </div>
+
+            <div
+                class="mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            >
+                <div
+                    v-for="story in patientStories"
+                    :key="story.name"
+                    class="bg-gradient-to-br from-gray-50 to-white p-4 md:p-6 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2"
+                >
+                    <!-- Star Rating -->
+                    <div class="flex mb-4">
+                        <span
+                            v-for="star in 5"
+                            :key="star"
+                            class="text-yellow-400 text-base md:text-lg"
+                        >
+                            {{ star <= story.rating ? "★" : "☆" }}
+                        </span>
+                    </div>
+
+                    <p
+                        class="text-gray-700 text-sm md:text-base leading-relaxed mb-6"
+                    >
+                        "{{ story.story }}"
+                    </p>
+
+                    <div class="flex items-center">
+                        <img
+                            :src="story.image"
+                            :alt="story.name"
+                            class="w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4"
+                        />
+                        <div>
+                            <h4
+                                class="font-bold text-gray-900 text-sm md:text-base"
+                            >
+                                {{ story.name }}
+                            </h4>
+                            <p class="text-gray-600 text-xs md:text-sm">
+                                {{ story.condition }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<style scoped>
+.text-card {
+    margin: 0 20px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .text-card {
+        margin: 0 50px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .text-card {
+        margin: 0 100px;
+        margin-bottom: 30px;
+    }
+}
+</style>
